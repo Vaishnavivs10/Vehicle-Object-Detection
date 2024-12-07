@@ -1,0 +1,3 @@
+cd "C:\vehicle_detection_project"
+
+python app.py
