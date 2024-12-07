@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vehicle Detection</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 50px;
+        }
+        .upload-container {
+            max-width: 600px;
+            margin: auto;
+        }
+        .result-container {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container upload-container">
+        <h2 class="text-center mb-4">Vehicle Detection</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile" name="file" accept=".jpg, .jpeg, .png" required>
+                    <label class="custom-file-label" for="inputGroupFile">Choose image...</label>
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Upload</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% if result %}
+        <div class="container result-container">
+            <h4 class="text-center">Result</h4>
+            <div class="card">
+                <div class="card-body text-center">
+                    <p class="lead">{{ result }}</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="container result-container">
+            <h4 class="text-center text-danger">Error</h4>
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if result or error %}
+        <div class="container mt-4">
+            <div class="text-center">
+                <button class="btn btn-secondary" onclick="location.href='/';">Upload Another Image</button>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Add Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
